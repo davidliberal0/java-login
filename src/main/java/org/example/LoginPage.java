@@ -60,5 +60,32 @@ public class LoginPage implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        // Reset fields
+        if (e.getSource() == resetButton) {
+            userPasswordField.setText("");
+            userIDField.setText("");
+        }
+
+        // Retrieve the credentials and validate
+        if (e.getSource() == loginButton) {
+            String userID = userIDField.getText();
+            String password = String.valueOf(userPasswordField.getPassword());
+
+            if (logininfo.containsKey(userID)) {
+                if (logininfo.get(userID).equals(password)) {
+                    messageLabel.setForeground(Color.green);
+                    messageLabel.setText("Login Successful");
+                    WelcomePage welcomePage = new WelcomePage();
+                } else {
+                    messageLabel.setForeground(Color.red);
+                    messageLabel.setText("wrong password");
+                }
+            }
+
+        } else {
+            messageLabel.setForeground(Color.red);
+            messageLabel.setText("User ID not Found!");
+        }
+
     }
 }
