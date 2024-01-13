@@ -11,6 +11,15 @@ public class IDandPasswords {
 
     // constructor
     IDandPasswords() {
+        // store logins credentials into the hash map
         logininfo.put("Bro", "pizza");
+        logininfo.put("David", "123");
+        logininfo.put("Amos", "Liberal");
     }
+
+    // getter method for classes that request this
+    protected HashMap getLoginInfo() {
+        return logininfo;
+    }
+
 }
