@@ -19,7 +19,8 @@ public class LoginPage implements ActionListener {
     JLabel userIDLabel = new JLabel("User ID:");
     JLabel userPasswordLabel = new JLabel("Password:");
     JLabel messageLabel = new JLabel("This is a text");
-
+    JLabel registerLabel = new JLabel("Register an Account...");
+    JButton registerButton = new JButton("Register");
     HashMap<String, String> logininfo = new HashMap<String, String>();
 
     LoginPage(HashMap<String, String> loginInfoOriginal) {
@@ -28,10 +29,16 @@ public class LoginPage implements ActionListener {
         // Components Layout
         userIDLabel.setBounds(50, 100, 75, 25);
         userPasswordLabel.setBounds(50, 150, 75, 25);
-        messageLabel.setBounds(125, 250, 250, 35);
+        messageLabel.setBounds(125, 300, 250, 35);
         messageLabel.setFont(new Font(null, Font.ITALIC, 25));
         userIDField.setBounds(125, 100, 200, 25);
         userPasswordField.setBounds(125, 150, 200, 25);
+
+        // register an account
+        registerLabel.setBounds(150, 230, 250, 25);
+        registerLabel.setFont(new Font(null, Font.ITALIC, 15));
+        registerButton.setBounds(175, 255, 100, 25);
+        registerButton.addActionListener(this);
 
         // login button layout
         loginButton.setBounds(125, 200, 100, 25);
@@ -49,6 +56,8 @@ public class LoginPage implements ActionListener {
         frame.add(userPasswordField);
         frame.add(loginButton);
         frame.add(resetButton);
+        frame.add(registerLabel);
+        frame.add(registerButton);
 
         // frame attributes
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,18 +68,15 @@ public class LoginPage implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         // Reset fields
         if (e.getSource() == resetButton) {
             userPasswordField.setText("");
             userIDField.setText("");
         }
-
         // Retrieve the credentials and validate
         if (e.getSource() == loginButton) {
             String userID = userIDField.getText();
             String password = String.valueOf(userPasswordField.getPassword());
-
             if (logininfo.containsKey(userID)) {
                 if (logininfo.get(userID).equals(password)) {
                     messageLabel.setForeground(Color.green);
@@ -82,11 +88,9 @@ public class LoginPage implements ActionListener {
                     messageLabel.setText("wrong password");
                 }
             }
-
         } else {
             messageLabel.setForeground(Color.red);
             messageLabel.setText("User ID not Found!");
         }
-
     }
 }
