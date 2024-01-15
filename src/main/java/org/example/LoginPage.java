@@ -92,5 +92,12 @@ public class LoginPage implements ActionListener {
             messageLabel.setForeground(Color.red);
             messageLabel.setText("User ID not Found!");
         }
+
+        if (e.getSource() == registerButton) {
+            frame.dispose();
+            RegisterPage register = new RegisterPage();
+        }
+
     }
+
 }
