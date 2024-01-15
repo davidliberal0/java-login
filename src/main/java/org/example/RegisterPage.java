@@ -23,6 +23,8 @@ public class RegisterPage implements ActionListener {
         registerPageTitle.setFont(new Font(null, Font.ITALIC, 25));
         userIDRegisterLabel.setBounds(50, 100, 75, 25);
         userPasswordRegisterLabel.setBounds(50, 150, 75, 25);
+        usernameRegister.setBounds(125, 100, 200, 25);
+        passwordRegister.setBounds(125, 150, 200, 25);
         // Text fields
 
         // Register button
@@ -31,6 +33,8 @@ public class RegisterPage implements ActionListener {
         frame.add(userIDRegisterLabel);
         frame.add(userPasswordRegisterLabel);
         frame.add(registerPageTitle);
+        frame.add(passwordRegister);
+        frame.add(usernameRegister);
 
         // frame attributes
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
